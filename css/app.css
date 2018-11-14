@@ -17,7 +17,8 @@ body {
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    background: #ffffff url('../img/geometry2.png');
+    /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
 }
 
@@ -33,9 +34,10 @@ h1 {
     font-weight: 300;
 }
 
+
 /*
- * Styles for the deck of cards
- */
+   * Styles for the deck of cards
+   */
 
 .deck {
     width: 660px;
@@ -63,12 +65,17 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    /* This is animation for a card going to default state */
+    transform: rotateY(0deg);
+    transition: 1s ease;
 }
 
 .deck .card.open {
-    transform: rotateY(0);
     background: #02b3e4;
     cursor: default;
+    /* This is animation for a card when coming from default */
+    transform: rotateY(180deg);
+    transition: 1s ease;
 }
 
 .deck .card.show {
@@ -81,9 +88,10 @@ h1 {
     font-size: 33px;
 }
 
+
 /*
- * Styles for the Score Panel
- */
+   * Styles for the Score Panel
+   */
 
 .score-panel {
     text-align: left;
