@@ -1,4 +1,5 @@
 // Funcao que 'embaralha' os cartoes
+'use strict';
 function cardRandom(array) {
     let indexAtual = array.length,
         valorTemp, randomIndex;
