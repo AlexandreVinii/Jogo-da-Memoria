@@ -16,11 +16,17 @@ function cardRandom(array) {
 
 
 window.onload = function () {
+    const cards = ["fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", "fa fa-bolt", "fa fa-cube", "fa fa-leaf", "fa fa-bicycle", "fa fa-bomb"]; 
+    let deck= [...cards, ...cards];
+    let randomCards = cardRandom(deck);
+
+    let cardElements = document.getElementsByClassName('symbols');
+
     let openedCards = [];
     matchedCards = [];
-    atualCard = [];
+    cardO = [];
     firstCard = 0;
-    contadorMove = 0;
+    moves = 0;
     restart = document.getElementsByClassName('restart');
     modal = document.getElementById('myModal');
     span = document.getElementsByClassName('close')[0];
@@ -31,13 +37,6 @@ window.onload = function () {
 
     })
 
-    const cards = ['fa-diamond', 'fa-diamond', 'fa-paper-plane-o', 'fa-paper-plane-o', 'fa-anchor', 'fa-anchor', 'fa-bolt', 'fa-bolt', 'fa-cube', 'fa-cube', 'fa-leaf', 'fa-leaf', 'fa-bicycle', 'fa-bicycle',
-        'fa-bomb', 'fa-bomb'
-    ];
-    let randomCards = cardRandom(cards);
-
-    let cardElements = document.getElementsByClassName('symbols');
-
     for (i = 0; i < cardElements.length; i++) {
         cardElements[i].className = randomCards[i] + ' fa symbols';
 
@@ -45,7 +44,7 @@ window.onload = function () {
 // Abre uma janela que dizendo quantos movimentos, e quantos segundos foram precisos
     function popup() {
         modal.style.display = "flex";
-        document.getElementById('p1').innerHTML = 'Você venceu com apenas ' + contadorMove + ' movimentos ' + ' e  ' + seconds + ' segundos.';
+        document.getElementById('p1').innerHTML = 'Você venceu com apenas ' + moves + ' movimentos ' + ' e  ' + seconds + ' segundos.';
     }
 
     span.onclick = function closeX() {
@@ -84,47 +83,47 @@ window.onload = function () {
         if (!clickFlag) {
             return;
         }
-        atualCard = this;
-        atualCard.removeEventListener('click', cardClick);
-        console.log(atualCard);
+        cardO = this;
+        cardO.removeEventListener('click', cardClick);
+        console.log(cardO);
 
 
         // Faz uma contagem de cada clique nos Cards.
         let countMoves = document.getElementById('moves');
 
-        contadorMove++;
-        countMoves.innerHTML = contadorMove;
+        moves++;
+        countMoves.innerHTML = moves;
         console.log(countMoves);
 
         // Aqui as Estrelas de 'dificuldade' se alteram de acordo com a quantidade de movimentos
-        if (contadorMove === 20) {
+        if (moves === 20) {
             let removeStar = document.getElementById('star3');
             removeStar.style.display = 'none';
-        } else if (contadorMove === 30) {
+        } else if (moves === 30) {
             let removeStarTwo = document.getElementById('star2');
             removeStarTwo.style.display = 'none';
         }
 
-        if (contadorMove === 1) {
+        if (moves === 1) {
             startTime();
         }
 
         
-        atualCard.classList.add('open', 'show');
+        cardO.classList.add('open', 'show');
 
         if (firstCard) {
 
             clickFlag = false;
             // Faz a validacao para os cards Iguais
-            if (atualCard.innerHTML === firstCard.innerHTML) {
-                atualCard.classList.add('match');
+            if (cardO.innerHTML === firstCard.innerHTML) {
+                cardO.classList.add('match');
                 firstCard.classList.add('match');
-                matchedCards.push(atualCard, firstCard);
+                matchedCards.push(cardO, firstCard);
 
                 firstCard = null;
 
 
-                if (cards.length === matchedCards.length) {
+                if (deck.length === matchedCards.length) {
 
 
                     stopTime();
@@ -137,16 +136,16 @@ window.onload = function () {
                 // Feito para reiniciar a jogada a cada Card que nao é correspondente ou similar ao selecionado
                 setTimeout(function () {
 
-                    atualCard.classList.remove('open', 'show');
+                    cardO.classList.remove('open', 'show');
                     firstCard.classList.remove('open', 'show');
-                    atualCard.addEventListener('click', cardClick);
+                    cardO.addEventListener('click', cardClick);
                     firstCard.addEventListener('click', cardClick);
                     firstCard = null;
                     clickFlag = true;
                 }, 500);
             }
         } else {
-            firstCard = atualCard;
+            firstCard = cardO;
             openedCards.push(this);
             clickFlag = true;
         }
