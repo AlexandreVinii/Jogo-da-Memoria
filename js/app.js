@@ -23,13 +23,13 @@ window.onload = function () {
 
     let cardElements = document.getElementsByClassName('symbols');
 
-    let openedCards = [];
-    matchedCards = [];
-    cardO = [];
-    firstCard = 0;
-    moves = 0;
-    restart = document.getElementsByClassName('restart');
-    modal = document.getElementById('myModal');
+    let openedCards = [],
+    matchedCards = [],
+    cardO = [],
+    firstCard = 0,
+    moves = 0,
+    restart = document.getElementsByClassName('restart'),
+    modal = document.getElementById('myModal'),
     span = document.getElementsByClassName('close')[0];
 
 // Reinicia o Jogo ao clicar no botao
@@ -38,7 +38,7 @@ window.onload = function () {
 
     })
 
-    for (i = 0; i < cardElements.length; i++) {
+    for (let i = 0; i < cardElements.length; i++) {
         cardElements[i].className = randomCards[i] + ' fa symbols';
 
     }
@@ -58,9 +58,9 @@ window.onload = function () {
             modal.style.display = "none";
         }
     }
-    let stopWatch = document.getElementById('timer');
-    time = 0;
-    seconds = 0
+    let stopWatch = document.getElementById('timer'),
+    time = 0,
+    seconds = 0;
     // Inicia a contagem do Relógio
     function startTime() {
         time = setInterval(function () {
@@ -152,7 +152,7 @@ window.onload = function () {
         }
     }
     //Funcao para listar os Eventos.'onclick'
-    for (i = 0; i < displayCards.length; i++) {
+    for (let i = 0; i < displayCards.length; i++) {
         displayCards[i].addEventListener('click', cardClick);
 
     }
