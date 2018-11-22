@@ -4,6 +4,7 @@
 
 * [Instructions](#instructions)
 * [Contributing](#contributing)
+* [Dependences](#dependences)
 
 ## Instructions
 
@@ -19,7 +20,7 @@ This repository is the starter code for _all_ Udacity students. Therefore, we mo
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
 
-##Dependences
-jQuery
-Font Awesom
-Bootstrap
+## Dependences
+* jQuery
+* Font Awesom
+* Bootstrap
