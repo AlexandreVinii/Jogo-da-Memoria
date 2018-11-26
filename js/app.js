@@ -32,6 +32,10 @@ window.onload = function () {
     modal = document.getElementById('myModal'),
     span = document.getElementsByClassName('close')[0];
 
+    let stopWatch = document.getElementById('timer'),
+    time = 0,
+    seconds = 0;
+
 // Reinicia o Jogo ao clicar no botao
     restart[0].addEventListener('click', function () {
         location.reload();
@@ -44,8 +48,18 @@ window.onload = function () {
     }
 // Abre uma janela que dizendo quantos movimentos, e quantos segundos foram precisos
     function popup() {
+        let qtdStar;
+        if(moves <= 20){
+            qtdStar = 'três';
+        }
+        else if (moves <= 30 && moves >= 21) {
+            qtdStar = 'duas';
+        }
+        else{
+            qtdStar = 'uma';
+        }
         modal.style.display = "flex";
-        document.getElementById('p1').innerHTML = 'Você venceu com apenas ' + moves + ' movimentos ' + ' e  ' + seconds + ' segundos.';
+        document.getElementById('p1').innerHTML = 'Você venceu com apenas  ' + qtdStar + ' Estrela(s)  ' + moves + ' movimentos ' + ' e  ' + seconds + ' segundos.';
     }
 
     span.onclick = function closeX() {
@@ -58,9 +72,7 @@ window.onload = function () {
             modal.style.display = "none";
         }
     }
-    let stopWatch = document.getElementById('timer'),
-    time = 0,
-    seconds = 0;
+
     // Inicia a contagem do Relógio
     function startTime() {
         time = setInterval(function () {
